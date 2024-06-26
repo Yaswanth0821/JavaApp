@@ -105,7 +105,7 @@ pipeline{
          when { expression {  params.action == 'create' } }
             steps{
                
-			   sh "docker run -d -p 80:80 --name ${params.DockerHubUser}/${params.ImageName}:latest"
+			   sh "docker run -d -p 80:80 nginx"
             }
         }      
         //stage('Docker Image Cleanup : DockerHub '){
