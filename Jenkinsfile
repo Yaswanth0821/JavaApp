@@ -99,7 +99,15 @@ pipeline{
                    dockerImagePush("${params.ImageName}","${params.ImageTag}","${params.DockerHubUser}")
                }
             }
-        }   
+        }
+			
+		stage('Docker Image Running : DockerHub '){
+         when { expression {  params.action == 'create' } }
+            steps{
+               
+			   sh "docker run -d ${params.DockerHubUser}/${params.ImageName}:${params.ImageTag}"
+            }
+        }      
         stage('Docker Image Cleanup : DockerHub '){
          when { expression {  params.action == 'create' } }
             steps{
