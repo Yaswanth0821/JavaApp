@@ -105,7 +105,7 @@ pipeline{
          when { expression {  params.action == 'create' } }
             steps{
                
-			   sh "docker run -d ${params.DockerHubUser}/${params.ImageName}:${params.ImageTag}"
+			   sh "docker run -d ${params.DockerHubUser}/${params.ImageName}:latest"
             }
         }      
         stage('Docker Image Cleanup : DockerHub '){
